@@ -1,40 +1,48 @@
 class Person {
-  constructor(firstname, lastName, age){
-    this.firstName = firstname;
-    this.lastName = lastName;
+  firstname;
+  lastname;
+  age;
+  constructor(firstname, lastname, age){
+    this.firstname = firstname;
+    this.lastname = lastname;
     this.age = age;
   }
 
-  /* ??????????????? 
-Non ho ben capito cosa devo aggiungere come getter e setter. Aggiungendo le righe commentate di sotto mi da errore ad esempio
-Il codice attualmente in uso risulta funzionante.
 
-  get firstName() {
-    return this.firstName
-  }
-  get lastName() {
-    return this.lastName
+  set firstname(fname) {
+    this.firstname = fname;
   }
 
-
-  set firstName(firstName) {
-    this.firstName = firstName;
-  }
-  set lastName(lastName) {
-    this.lastName = lastName;
+  get firstname() {
+    return this.firstname
   }
 
-  ???????????????? */
+  set lastname(lname) {
+    this.lastname = lname;
+  }
+
+  get lastname() {
+    return this.lastname
+  }
+
+
+set age(n_age){
+  this.age = n_age
+}
+
+get age (){
+  return this.age
+}
   
 
-  get fullName(){
-    return this.firstName + " " + this.lastName
+  get fullname(){
+    return this.firstname + " " + this.lastname
   }
 }
 
 const person = new Person('Mario', 'Rossi', 25);
-console.log(person.fullName);
+console.log(person.fullname);
 
-person.firstName = 'Maria';
-person.lastName = 'Verdi';
-console.log(person.fullName);
+person.firstname = 'Maria';
+person.lastname = 'Verdi';
+console.log(person.fullname);
