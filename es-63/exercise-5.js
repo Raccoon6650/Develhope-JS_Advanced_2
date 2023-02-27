@@ -9,5 +9,5 @@ person.surname = person.lastName;
 person.old = person.age;
 
 
-const { id, name, surname, old } = person;
-console.log(id, person.name, surname, old);
+const { id, name, surname, old } = keys.person;
+console.log(id, name, surname, old);
