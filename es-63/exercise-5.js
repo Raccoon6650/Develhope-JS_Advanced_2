@@ -9,5 +9,5 @@ person.surname = person.lastName;
 person.old = person.age;
 
 
-const { id, name, surname, old } = keys.person;
+const { id, name = person.firstName, surname = person.lastName, old = person.age} = person;
 console.log(id, name, surname, old);
