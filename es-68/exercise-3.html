@@ -1,0 +1,84 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>Title</label>
+          <input type="text" id="todo-title" />
+        </div>
+        <div>
+          <label>Completed</label>
+          <input type="checkbox" id="todo-completed" />
+        </div>
+
+        <button type="submit" id="submit-todo">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+   async function postTodo(){
+
+    function elementFromId(element){
+      return document.getElementById(element)
+    }
+    function elementCreator(type){
+      return document.createElement(type)
+    }
+    function appendThings(container, element){
+      return container.appendChild(element)
+    }
+
+
+    try {
+      //const request = await fetch(`https://jsonplaceholder.typicode.com/posts`, options);
+      //const response = await request.json()
+      //console.log (response)
+      elementFromId("submit-todo").addEventListener("click", async (e) => {
+        e.preventDefault()
+        const title = elementFromId("todo-title")
+        const postValue = title.value
+
+        const box = elementFromId("todo-completed")
+        const check = box.checked;
+
+        const options = {
+        method: 'POST',
+        body: JSON.stringify({title: postValue, completed: check})
+        }
+
+        const request = await fetch(`https://jsonplaceholder.typicode.com/posts`, options);
+        const response = await request.json()
+        //console.log(postValue)
+        //console.log(check)
+
+
+
+       /* if(elementFromId("divText")){
+          elementFromId("divText").innerText = postValue
+        }
+        else 
+        {const text = elementCreator("div")
+        text.id = "divText"
+        text.innerText = postValue
+        appendThings( document.body ,text)}
+      */
+
+      if(!elementFromId("divText")){
+        const text = elementCreator("div")
+        text.id = "divText"
+        appendThings( document.body ,text)
+        } elementFromId("divText").innerText = postValue
+
+      });
+    }
+    catch(err){
+      (err) => console.error(err)
+    }
+   }
+
+   postTodo()
+</script>
+
+//Si ringrazia il supporto di Alessio! 
