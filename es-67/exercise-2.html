@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <div id="body__container" style="display: flex; align-items: center;"></div>
+  </body>
+</html>
+
+<script>
+  async function fromTodo(id){
+    function elementCreator(type){
+      return document.createElement(type)
+    }
+    function appendThings(container, element){
+      return container.appendChild(element)
+    }
+
+    const request = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
+    const response = await request.json()
+    //console.log (response); out: {userId: 1, id: 4, title: 'et porro tempora', completed: true}
+    const title = elementCreator("h2")
+    title.textContent = `Title: ${response.title}`;
+
+    const box = elementCreator('input')
+    box.type = 'checkbox';
+    box.checked = response.completed;
+
+    const body__container = document.getElementById('body__container')
+    appendThings(body__container, title);
+    appendThings(body__container, box)
+  }
+  fromTodo(4)
+</script>
